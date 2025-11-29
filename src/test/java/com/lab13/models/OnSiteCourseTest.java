@@ -61,7 +61,7 @@ public class OnSiteCourseTest {
     @CsvSource({
         "Manuela, Aula 12, 30",
         "Sky, Aula 7, 20",
-        "Carlos, Aula 4, 15"
+        "Mikasa, Aula 4, 15"
     })
     @DisplayName("Probando constructor completo con profesor")
     void testFullConstructor(String professor, String room, int quota) {
