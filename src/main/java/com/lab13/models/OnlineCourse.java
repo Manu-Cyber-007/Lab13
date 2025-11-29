@@ -14,6 +14,13 @@ public class OnlineCourse extends Course {
     }
 
     @Override
+    public String showInformationString() {
+        return String.format("[Online] %s (%d hs) - Professor: %s - Platform: %s",
+            title, duration, professor, platform);
+    }
+
+
+    @Override
     public void showInformation() {
         System.out.println("\n[Online] " + title + " (" + duration + " hs) - Professor: " + professor + " - Platform: " + platform);
     }

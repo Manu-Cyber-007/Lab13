@@ -17,6 +17,12 @@ public class OnSiteCourse extends Course {
     }
 
     @Override
+    public String showInformationString() {
+        return String.format("[On Site] %s (%d hs) - Professor: %s - Room: %s, Quota: %d",
+            title, duration, professor, room, quota);
+    }
+
+    @Override
     public void showInformation() {
         System.out.println("\n[On Site] " + title + " (" + duration + " hs) - Professor: " + professor + " - Room: " + room + ", Quota: " + quota);
     }

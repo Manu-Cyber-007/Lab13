@@ -4,10 +4,10 @@ import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
-
 import static org.junit.jupiter.api.Assertions.*;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class OnSiteCourseTest {
 
     private OnSiteCourse osc;
@@ -25,7 +25,7 @@ public class OnSiteCourseTest {
     @BeforeEach
     void beforeEach() {
         osc = new OnSiteCourse("Base", 10, "Aula 1", 20);
-        System.out.println("Preparando un nuevo OnSiteCourse...");
+        System.out.println("Preparando OnSiteCourse...");
     }
 
     @AfterEach
@@ -35,6 +35,7 @@ public class OnSiteCourseTest {
     }
 
     @Test
+    @Order(1)
     @DisplayName("Room y quota se asignan correctamente")
     void testRoomAndQuota() {
         assertEquals("Aula 1", osc.getRoom());
@@ -42,6 +43,7 @@ public class OnSiteCourseTest {
     }
 
     @ParameterizedTest
+    @Order(2)
     @CsvSource({
         "Aula 3, 30",
         "Aula 5, 25",
@@ -55,6 +57,7 @@ public class OnSiteCourseTest {
     }
 
     @ParameterizedTest
+    @Order(3)
     @CsvSource({
         "Manuela, Aula 12, 30",
         "Sky, Aula 7, 20",
@@ -67,5 +70,17 @@ public class OnSiteCourseTest {
         assertEquals(professor, temp.getProfessor());
         assertEquals(room, temp.getRoom());
         assertEquals(quota, temp.getQuota());
+    }
+
+    @Test
+    @Order(4)
+    @DisplayName("showInformation() contiene los datos correctos")
+    void testShowInformation() {
+        String info = osc.showInformationString();
+
+        assertTrue(info.contains("Base"));
+        assertTrue(info.contains("10"));
+        assertTrue(info.contains("Aula 1"));
+        assertTrue(info.contains("20"));
     }
 }

@@ -40,6 +40,14 @@ public class CourseTest {
         assertEquals("Unassigned", c.getProfessor());
     }
 
+    @Test
+    @DisplayName("Constructor con profesor asigna correctamente")
+    void testConstructorConProfesor() {
+        Course c = new Course("SQL", 30, "Laura");
+        assertEquals("Laura", c.getProfessor());
+        assertEquals("SQL", c.getTitle());
+    }
+
     @ParameterizedTest
     @ValueSource(strings = {"Java", "Python", "C++"})
     @DisplayName("Probando distintos títulos válidos")
@@ -54,5 +62,11 @@ public class CourseTest {
     void testDurations(int duration) {
         course.setDuration(duration);
         assertEquals(duration, course.getDuration());
+    }
+
+    @DisplayName("showInformation() no devuelve errores (String vacío)")
+    void testShowInformationString() {
+        String info = course.showInformationString();
+        assertEquals("", info, "Course base debe devolver un string vacío.");
     }
 }

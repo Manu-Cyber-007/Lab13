@@ -36,4 +36,8 @@ public class Course {
 
     public void setProfessor(String professor) {
          this.professor = professor; }
+
+     public String showInformationString() {
+         return "";
+}
 }

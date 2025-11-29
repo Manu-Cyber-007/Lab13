@@ -50,17 +50,28 @@ public class OnlineCourseTest {
         OnlineCourse temp = new OnlineCourse(title, duration, platform);
         assertEquals(platform, temp.getPlatform());
     }
+    
 
     @ParameterizedTest
     @CsvSource({
         "Sky, Udemy",
         "Manuela, Platzi",
-        "Ana, YouTube"
+        "Mikasa, YouTube"
     })
     @DisplayName("Probando profesor y plataforma")
     void testProfessorAndPlatform(String professor, String platform) {
         OnlineCourse temp = new OnlineCourse("Course", 10, professor, platform);
         assertEquals(professor, temp.getProfessor());
         assertEquals(platform, temp.getPlatform());
+    }
+
+    @Test
+    @DisplayName("showInformation() devuelve texto formateado correctamente")
+    void testShowInformationFormat() {
+        String info = oc.showInformationString();
+
+        assertTrue(info.contains("Base"), "Debe incluir el título.");
+        assertTrue(info.contains("10"), "Debe incluir la duración.");
+        assertTrue(info.contains("YouTube"), "Debe incluir la plataforma.");
     }
 }
