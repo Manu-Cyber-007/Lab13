@@ -1,0 +1,7 @@
+# Carpetas que no deben subirse
+target/
+.vscode/
+
+# Archivos comunes a ignorar
+*.log
+*.class
