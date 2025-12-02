@@ -64,6 +64,7 @@ public class CourseTest {
         assertEquals(duration, course.getDuration());
     }
 
+    @Test
     @DisplayName("showInformation() no devuelve errores (String vacío)")
     void testShowInformationString() {
         String info = course.showInformationString();
